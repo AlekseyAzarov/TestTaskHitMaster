@@ -29,12 +29,12 @@ public class BulletObjectsPool : MonoBehaviour
     {
         GameObject bullet = _bulletQueue.Dequeue();
         bullet.SetActive(true);
+        _bulletQueue.Enqueue(bullet);
         return bullet;
     }
 
     public void ReturnBullet(GameObject bullet)
     {
-        _bulletQueue.Enqueue(bullet);
         bullet.transform.position = Vector3.zero;
         bullet.SetActive(false);
     }
